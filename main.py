@@ -5,11 +5,11 @@ from player import *
 name = input()
 
 job_list = [ 
-    [player.Boss(name)], # 0번
-    [player.Math_Teacher(name)],# 1번
-    [player.Muggle(name)], # 2번
-    [player.Smoker(name)], # 3번
-    [player.Flaming(name)] # 4번
+    [Boss(name)], # 0번
+    [Math_Teacher(name)],# 1번
+    [Muggle(name)], # 2번
+    [Smoker(name)], # 3번
+    [Flaming(name)] # 4번
 ]
 #직업 선택 !
 job = int(input())-1  #리스트 0번 = 1번 직업이니까 1을 뺀다 이거죠?? ㅇㅇ

@@ -66,7 +66,7 @@ class Player(status.MainStatus):
 
 # 상속, 수학 선생님
 ########################################################################################################################################################
-class Math_Teacher(player):
+class Math_Teacher(Player):
     def __init__(self, name, level=1):
         super().__init__(name, level)
         self.critical = 0.30

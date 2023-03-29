@@ -3,7 +3,7 @@ import random, status,item
 
 
 # player 
-class player(status.MainStatus):
+class Player(status.MainStatus):
     def __init__(self, name, level=1):
         super().__init__(name, level)
 
@@ -32,42 +32,8 @@ class player(status.MainStatus):
             self.level_up()
             self.give_message("레벨업!!")
             self.level += 1
-
-
-class Math_Teacher(player):
-    def __init__(self, name, level=1):
-        super().__init__(name, level)
-        self.critical = 0.30
-        self.job = "수학 선생님"
-        
-
-# 스킬별 메시지 출력 - 수학 선생님
-########################################################################################################################################################
-    def magic_attack_massage(self): # self 넣어야함 
-        text = [ ["숙제 2배~"],
-            ["숙제가 적지??"],
-            ["보강 하자"]
-        ]
-        return "수학 선생님이, 갑작스레 말씀하셨다. [ 공격 스킬 ] : " + random.choice(text)
-    
-    def cure_massage(self):
-        text = [ ["오늘 휴강 ~ ^^"],
-            ["루미 큐브 할까?"],
-            ["숙제 줄여 줄까?"]
-        ]
-        return " 학생들이 환호합니다!! [ 회복 스킬 ] 수학 선생님 : " + random.choice(text)
-    
-    def counter_massage(self):
-        text = [ ["숙제 50배!! "],
-            ["부모님께 말씀 드린다?"],
-            ["대학가면 애인 생길거야"]
-        ]
-        return " 수학 선생님이 비장한 표정을 짓고, 분위기가 고조되었다. [ 필살기! ]: " + random.choice(text)
-
-
-# 수학 선생님 스킬 발동!
-########################################################################################################################################################
-
+#스킬
+##################################################################################################################################################################
 #마법공격
     def magic_attack(self,target): 
         #크리티컬이 포함된 데미지 또는, 포함 안된 데미지 반환받는다.
@@ -96,6 +62,37 @@ class Math_Teacher(player):
         self.give_message(self.counter_massage())
         #상대방의 체력을 조정한다.
         self.reduce_hp(target,damage)
+
+
+# 상속, 수학 선생님
+########################################################################################################################################################
+class Math_Teacher(player):
+    def __init__(self, name, level=1):
+        super().__init__(name, level)
+        self.critical = 0.30
+        self.job = "수학 선생님"
+        
+    def magic_attack_massage(self): # self 넣어야함 
+        text = [ ["숙제 2배~"],
+            ["숙제가 적지??"],
+            ["보강 하자"]
+        ]
+        return "수학 선생님이, 갑작스레 말씀하셨다. [ 공격 스킬 ] : " + random.choice(text)
+    
+    def cure_massage(self):
+        text = [ ["오늘 휴강 ~ ^^"],
+            ["루미 큐브 할까?"],
+            ["숙제 줄여 줄까?"]
+        ]
+        return " 학생들이 환호합니다!! [ 회복 스킬 ] 수학 선생님 : " + random.choice(text)
+    
+    def counter_massage(self):
+        text = [ ["숙제 50배!! "],
+            ["부모님께 말씀 드린다?"],
+            ["대학가면 애인 생길거야"]
+        ]
+        return " 수학 선생님이 비장한 표정을 짓고, 분위기가 고조되었다. [ 필살기! ]: " + random.choice(text)
+
 ############################################################################################################################################################
 class Muggle(Math_Teacher):
     def __init__(self, name, level=1):

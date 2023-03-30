@@ -61,9 +61,10 @@ class Monster(MainStatus):
             self.now_hp += round(self.max_hp * 0.2)
             if self.now_hp > self.max_hp:
                 self.now_hp = self.max_hp
-            self.print_message(f"{self.name}의 체력이 회복되었다!")
+            self.give_message(f"{self.name}의 체력이 회복되었다!")
 
     def over_drive(self):
+        self.give_message(f"{self.name}의 오버 드라이브!")
         if not self.overdrive:
             if self.now_hp < self.max_hp * 0.3:
                 self.physical_damage *= 1.5

@@ -1,6 +1,6 @@
 from datetime import datetime
 from rich import *
-import keyboard, time, os, random, system, player
+import keyboard, time, os, random, player
 
 
 # 맵 그리기
@@ -42,7 +42,7 @@ def set_monster_location(xarr, yarr, rows, cols):
         yarr[i] = random.randint(1, cols - 1)
 
 
-def move(player: player.Adventurer):
+def move():
     cols = 6
     rows = 30
     x = 5

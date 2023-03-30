@@ -12,21 +12,6 @@ class Player(status.MainStatus):
         self.weapon_damage_add()
 
     def give_message(self, s, target):
-        # 상태 메시지 출력을 만들어서 인자값으로 보낸다!
-        # hp_color = "[bold red]" + "■" + "[/bold red]"
-        # mp_color = "[bold blue]" + "■" + "[/bold blue]"
-        # exp_color = "[bold green]" + "■" + "[/bold green]"
-        # 체력: {self.bar(self.max_hp,      self.now_hp,            self.hp_color)}\n
-        # 마나: {self.bar(self.max_mp,      self.now_mp,            self.mp_color)}\n
-        # EXP : {self.bar(self.max_experience,self.now_experience,self.exp_color)}\n
-        #         Red: "[red]" or "[bold red]"
-        #       Green: "[green]" or "[bold green]"
-        #       Blue: "[blue]" or "[bold blue]"
-        #       Yellow: "[yellow]" or "[bold yellow]"
-        #       Magenta: "[magenta]" or "[bold magenta]"
-        #       Cyan: "[cyan]" or "[bold cyan]"
-        #        White: "[white]" or "[bold white]"
-        #       Black: "[black]" or "[bold black]"
         string = "========================================플레이어의 턴!========================================\n\n"
         string += f"[{self.name}]\n"
         string += f" 체력 : {self.bar(self.max_hp,self.now_hp,self.hp_color)} {self.now_hp}/{self.max_hp}\n"  # 체력바
@@ -74,14 +59,10 @@ class Player(status.MainStatus):
 
     # 회복
     def cure(self, target):
-        # 자신의 행운값 + 마법공격력 / 3 만큼 체력을 회복하고
+        # 자신의 행운값 + 마법공격력 / 3 만큼 체력을 회복하고, 최대 체력을 넘지 않게 조정한다.
         self.now_hp = min(
             self.now_hp + int(self.magical_damage / 3) * self.luck, self.max_hp
         )
-        # self.now_hp += int(self.magical_damage / 3) * self.luck
-        # 현재 체력이 최대 체력 보다 크다면~
-        # if self.now_hp > self.max_hp:
-        #     self.now_hp = self.max_hp # 최대 체력을 넘지 않는다.
         # 회복 스킬 메시지를 선택하고.
         s = self.cure_massage()  # 텍스트를 출력하고
         self.now_mp -= 20  # 마나를 소모하고

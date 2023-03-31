@@ -1,6 +1,6 @@
-from datetime import datetime
 from rich import *
-import keyboard, time, os, random, player,main
+from main import *
+import keyboard, time, os, random
 
 
 # 맵 그리기
@@ -63,7 +63,7 @@ def move():
         #3마리의 몬스터의 좌표들중, 일치하는 값이 있는지 탐색
         for i in range(len(xarr)):
             if x == xarr[i] and y == yarr[i]:
-                main.battle()
+                battle()
                 x, y = 5, 0
                 continue
 
@@ -95,5 +95,4 @@ def move():
             hunting_ground -= 1
             x = 25
             set_monster_location(xarr, yarr, rows, cols)
-
-move()
+battle()

@@ -1,7 +1,8 @@
 from player import *
 from monster import *
 from rich import *
-import time, random, os, time,keyboard,opening,view
+from view import *
+import time, random, os, time,keyboard,opening
 
 monster_list = [
         #속성 / 이름 / 레벨 / 체력 / 기본 공격력 / 마법 공격력 / 경험치 / 골드
@@ -148,7 +149,6 @@ while True:
 
 player_character = job_list[job]
 opening.oppening()
-
 print("\n테스트성공!")
 
 # 1. monster.py 64번줄, battle_healing의 출력 메소드 호출 코드가 give_message가 아닌 print_message

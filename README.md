@@ -1,10 +1,10 @@
 # Team_project_TEXT_RPG
-><br>팀 이름 : 손나JMK
+>팀 이름 : 손나JMK
 ><br>팀원 : 손성수,나지수,정승호,문영오,김성우
 
 ## 게임 이름 : 운빨 랜덤 TEXT RPG
 ## 주요 기능 : 캐릭터 생성.저장.불러오기
-><br>직업 선택
+>직업 선택
 ><br>일대 다수 전투 구현
 ><br>턴제 전투로, 플레이어는 행동 선택 가능,
 ><br>몬스터는 기본 공격 및 공격 스킬중, 랜덤으로 행동 선택
@@ -23,7 +23,7 @@
 ><br>로딩 화면 구현
            
 ## 라이브러리(requirements.text 참고 )
-><br>keyboard==0.13.5
+>keyboard==0.13.5
 ><br>markdown-it-py==2.2.0
 ><br>mdurl==0.1.2
 ><br>Pygments==2.14.0

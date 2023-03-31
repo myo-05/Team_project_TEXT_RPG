@@ -23,11 +23,11 @@
 ><br>로딩 화면 구현
            
 <br>##라이브러리(requirements.text 참고 )
-<br>>keyboard==0.13.5
-<br>>markdown-it-py==2.2.0
-<br>>mdurl==0.1.2
-<br>>Pygments==2.14.0
-<br>>rich==13.3.3
-<br>>typing-extensions==4.5.0
+><br>keyboard==0.13.5
+><br>markdown-it-py==2.2.0
+><br>mdurl==0.1.2
+><br>Pygments==2.14.0
+><br>rich==13.3.3
+><br>typing-extensions==4.5.0
 
            

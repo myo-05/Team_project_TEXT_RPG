@@ -7,12 +7,13 @@ from rich import *
 # player
 class Player(status.MainStatus):
     def __init__(self, name, level=1):
-        super().__init__(name, level)
+        super().__init__(level)
+        self.name = name
         # 무기 공격력 기본값 증가.
         self.weapon_damage_add()
 
     def give_message(self, s, target):
-        string = "========================================플레이어의 턴!========================================\n\n"
+        string = "========================================플레이어 턴========================================\n\n"
         string += f"[{self.name}]\n"
         string += f" 체력 : {self.bar(self.max_hp,self.now_hp,self.hp_color)} {self.now_hp}/{self.max_hp}\n"  # 체력바
         string += f" 마나 : {self.bar(self.max_mp,self.now_mp,self.mp_color)} {self.now_mp}/{self.max_mp}\n"  # 마나바

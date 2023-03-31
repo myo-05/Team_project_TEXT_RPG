@@ -4,8 +4,7 @@ from rich import *
 
 class MainStatus:
     # 생성자
-    def __init__(self, name, level=1):
-        self.name = name
+    def __init__(self, level=1):
         self.level = level
         self.max_experience = 100
         self.now_experience = 0

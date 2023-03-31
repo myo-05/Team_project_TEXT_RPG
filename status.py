@@ -1,6 +1,6 @@
 import random,keyboard,time,os
 from rich import *
-
+import json
 
 class MainStatus:
     # 생성자
@@ -95,12 +95,13 @@ class MainStatus:
         key_map = {"k":True,"l":False} # k = 강화하기, l = 사냥하러 가기
         while(True): # 무한루프
             os.system('cls') # 화면 지우기
+            gold_text ="[bold yellow]" + str(self.gold) + "G" + "[/bold yellow]"
             string = "@"*20
             string += " 강해질 수 있는 기회!!! "
             string += "@"*20
             string += "\n\n운빨 테스트를 진행하시겠습니까?(무기강화)\n" # 출력할 문자열
             string += f"K = 강화하기    L = 사냥하러 가기 Lv.{self.weapon_level} {self.weapon_name}\n" # 출력할 문자열
-            string += f"필요 골드 : 1000G      현재 보유 골드 : {self.gold}G\n" # 출력할 문자열
+            string += f"필요 골드 : 1000G      현재 보유 골드 : {gold_text}\n" # 출력할 문자열
             print(string)
             key = keyboard.read_key().lower() # 키보드 입력을 받는다.
             if key in key_map: # 입력받은 키가 key_map에 있다면
@@ -110,3 +111,7 @@ class MainStatus:
                     continue
                 else :
                     break
+    def save(self,name):
+        with open(f"{name}.json","w") as f:
+            json.dump(self.__dict__,f)
+        print(self.__dict__)

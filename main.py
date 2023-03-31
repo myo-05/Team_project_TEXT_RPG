@@ -102,6 +102,11 @@ def battle():  # 전투가 진행되는 함수
             break  # 플레이어가 억까 당햇을때~
                 # break
 
+def monster_move():
+    now = datetime.now()
+    now = datetime.strftime(now,"%S")
+    
+
 
 # 맵 그리기
 def location(x, y, rows, cols, xarr, yarr, hunting_ground):

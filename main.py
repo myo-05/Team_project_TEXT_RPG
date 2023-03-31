@@ -253,7 +253,7 @@ while True:
 player_character = job_list[job]
 try:player_character.load(player_character.name) #저장된 데이터가 있다면 불러오기
 except:print('저장된 데이터가 없습니다.')
-#opening.oppening() #오프닝
+opening.oppening() #오프닝
 start_time=time.time() #게임시작시간측정
 move() #맵탐색모드 + 전투
 end_time=time.time() #게임종료시간측정

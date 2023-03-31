@@ -1,7 +1,7 @@
 from player import *
 from monster import *
 from rich import *
-from lod import *
+from loading import *
 from datetime import datetime
 import time, random, os, time,keyboard,opening
 
@@ -58,33 +58,30 @@ def battle():  # 전투가 진행되는 함수
         else: # 3 = 힐 스킬 , 4 = 궁극기 스킬
             player_character.cure(mob[player_target]) if player_turn == 3 else player_character.counter(mob[player_target])
 
-        # elif player_turn == 3:  # 3 힐 스킬
-        #     player_character.cure(mob[player_target])
-
-        # elif player_turn == 4:  # 4 궁극기 발싸!!!!!!!!!!
-        #     player_character.counter(mob[player_target])
-
         # 몬스터 차례
         
         
         time.sleep(3)# 플레이어 턴, 3초간 메시지 출력하고 콘솔 클리어
         os.system("cls" if os.name == "nt" else "clear")
         for monster in mob:
-            skill = [
-                lambda: monster.attack(player_character),
-                lambda: monster.attack(player_character),
-                lambda: monster.skill(player_character),
-                lambda: monster.token_skill(player_character),
-            ]
-            if monster.boss:
-                monster.battle_healing(player_character)  # 보스 몬스터가 힐링
-                monster.over_drive(player_character)  # 보스 몬스터가 오버드라이브
-            value = random.randrange(len(skill))
-            skill[value]()  # 몬스터가 플레이어를 공격
-            if value < 2 :
-                monster.give_message(f"{monster.name}의 공격!!!",player_character)
-            time.sleep(2)
-            os.system("cls" if os.name == "nt" else "clear")
+            if monster.now_hp >= 0:
+                skill = [
+                    lambda: monster.attack(player_character),
+                    lambda: monster.attack(player_character),
+                    lambda: monster.skill(player_character),
+                    lambda: monster.token_skill(player_character),
+                ]
+                if monster.boss:
+                    monster.battle_healing(player_character)  # 보스 몬스터가 힐링
+                    monster.over_drive(player_character)  # 보스 몬스터가 오버드라이브
+                value = random.randrange(len(skill))
+                skill[value]()  # 몬스터가 플레이어를 공격
+                if value < 2 :
+                    monster.give_message(f"{monster.name}의 공격!!!",player_character)
+                time.sleep(2)
+                os.system("cls" if os.name == "nt" else "clear")
+            else:
+                pass
 
         #########결과판별#########
         if mob[player_target].now_hp <= 0:  # 몬스터가 죽었을때
@@ -92,10 +89,11 @@ def battle():  # 전투가 진행되는 함수
             player_character.get_gold(mob[player_target])  #    골드 획득
             del mob[player_target]  # 몬스터 삭제
             # 경험치 획득
-
         if not mob:
             print("이김^^\n계속 하려면 아무키나 입력해주세요.")
+            player_character.save(player_character.name)  # 플레이어 데이터 저장
             break  # 몬스터가 모두 죽었을때~
+            
 
         elif player_character.now_hp <= 0:
             print("끔살 당해뽀림??")
@@ -105,7 +103,7 @@ def battle():  # 전투가 진행되는 함수
 def monster_move():
     now = datetime.now()
     now = datetime.strftime(now,"%S")
-    
+
 
 
 # 맵 그리기
@@ -157,12 +155,12 @@ def move():
     set_monster_location(xarr, yarr, rows, cols)
     hunting_ground = 0
 
-    key_map = {"w":-1,"s":1,"a":-1,"d":1,"k":1}
+    key_map = {"w":-1,"s":1,"a":-1,"d":1,"k":1,}
     # 탐험 시작
     while True:
         
         time.sleep(0.15)
-        os.system("cls")
+        os.system("cls" if os.name == "nt" else "clear")
         # 맵 출력!
         print(location(x, y, rows, cols, xarr, yarr, hunting_ground))
         print(x,y)
@@ -171,7 +169,7 @@ def move():
         for i in range(len(xarr)):
             if x == xarr[i] and y == yarr[i]:
                 #로딩
-                loding()
+                loading()
                 #몬스터 매칭!
                 battle()
                 x, y = 5, 0
@@ -187,6 +185,8 @@ def move():
             else : 
                 print("더는 부활할 수 없으셈 ㅋㅋ")
                 time.sleep(2)
+                try:os.remove(f'{player_character.name}.json')
+                except:pass
                 break
             
 
@@ -222,9 +222,9 @@ def move():
             set_monster_location(xarr, yarr, rows, cols)
 
 
-############▼###############실제 실행 함수들 #############▼##########################
+########################### ▼ 실제 실행 함수들 ▼ #######################################
 
-os.system('cls')
+os.system("cls" if os.name == "nt" else "clear")
 # 사용자 이름 입력!
 name = str(input("이름을 입력해주세요 : "))
 # 플레이어가 사용할 직업을 담은 리스트
@@ -239,9 +239,6 @@ job_list = [
 # 직업 선택 !
 while True:
     try:
-        # job = (
-        #     int(input("직업을 선택해주세요.\n1.부장님 2.수학쌤 3. 머글 4.애연가. 5.악플러 : ")) - 1
-        # ) 
         job = int(input("직업을 선택해주세요.\n1.부장님 2.수학쌤 3. 머글 4.애연가. 5.악플러 : ")) - 1
         # job의 기대값은 0~4 , 올바른 입력값이 아닐경우 판별
         if job > 4 or job < 0:
@@ -254,7 +251,8 @@ while True:
         continue
 
 player_character = job_list[job]
-
+try:player_character.load(player_character.name) #저장된 데이터가 있다면 불러오기
+except:print('저장된 데이터가 없습니다.')
 #opening.oppening() #오프닝
 start_time=time.time() #게임시작시간측정
 move() #맵탐색모드 + 전투
@@ -262,11 +260,3 @@ end_time=time.time() #게임종료시간측정
 print("\n즐거운 운빨게임! 좋은 플레이! 좋은 하루! 가지다 너는!")
 playtime = f"{end_time-start_time:.3f} 초"
 print(f"\n총 플레이 시간 [{playtime}]")
-
-
-# 1. monster.py 64번줄, battle_healing의 출력 메소드 호출 코드가 give_message가 아닌 print_message
-#   > give_message로 변경.
-# 2. systme.py의 몬스터 기본공격시 출력 없음
-#   > 랜덤값이 2 이상이면 공격 메시지 출력 추가.
-# 3. over_drive스킬 메시지 출력 없음
-#   > monster class의 overdrive 스킬 메시지 추가

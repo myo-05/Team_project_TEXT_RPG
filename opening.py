@@ -22,10 +22,10 @@ s = ("""
 
 def print_text():
     for i in range(5):
-        os.system('cls')
+        os.system("cls" if os.name == "nt" else "clear")
         print(s)
         time.sleep(0.7)
-        os.system('cls')
+        os.system("cls" if os.name == "nt" else "clear")
         time.sleep(0.3)
 
 
@@ -41,7 +41,7 @@ def oppening():
     cnt = 0
     keymap = {'k':1,'l':-1}
     while len(text)>cnt:
-      os. system('cls')
+      os.system("cls" if os.name == "nt" else "clear")
       string = "─" * 100+"\n"
       string += text[cnt]
       string += "\n"+(" "*65)+"k = 다음 , l = 돌아가기 \n"

@@ -133,7 +133,7 @@ monster_list = [
         #속성 / 이름 / 레벨 / 체력 / 기본 공격력 / 마법 공격력 / 경험치 / 골드
         FireMonster(
             name ="파이리",
-            level= 1,
+            level= 6,
             hp= 200,
             physical_damage= 20,
             magical_damage= 20,
@@ -142,7 +142,7 @@ monster_list = [
         ),
         GrassMonster(
             name ="이상해씨",
-            level= 1,
+            level= 10,
             hp= 200,
             physical_damage= 20,
             magical_damage= 20,
@@ -151,7 +151,7 @@ monster_list = [
         ),
         WaterMonster(
             name ="꼬부기",
-            level= 1,
+            level= 7,
             hp= 200,
             physical_damage= 20,
             magical_damage= 20,
@@ -160,7 +160,7 @@ monster_list = [
         ),
         FireMonster(
             name ="브케인",
-            level= 1,
+            level= 4,
             hp= 200,
             physical_damage= 20,
             magical_damage= 20,
@@ -169,7 +169,7 @@ monster_list = [
         ),
         FireMonster(
             name ="뚜꾸리",
-            level= 1,
+            level= 5,
             hp= 200,
             physical_damage= 20,
             magical_damage= 20,
@@ -178,7 +178,7 @@ monster_list = [
         ),
         GrassMonster(
             name ="쥬리비안",
-            level= 1,
+            level= 2,
             hp= 200,
             physical_damage= 20,
             magical_damage= 20,
@@ -187,7 +187,7 @@ monster_list = [
         ),
         WaterMonster(
             name ="팽도리",
-            level= 1,
+            level= 4,
             hp= 200,
             physical_damage= 20,
             magical_damage= 20,
@@ -196,7 +196,7 @@ monster_list = [
         ),
         FireMonster(
             name ="가디",
-            level= 1,
+            level= 3,
             hp= 200,
             physical_damage= 20,
             magical_damage= 20,
@@ -205,7 +205,7 @@ monster_list = [
         ),
         GrassMonster(
             name ="이상해꽃",
-            level= 2,
+            level= 6,
             hp= 200,
             physical_damage= 20,
             magical_damage= 20,
@@ -214,7 +214,7 @@ monster_list = [
         ),
         WaterMonster(
             name ="어니부기",
-            level= 2,
+            level= 6,
             hp= 200,
             physical_damage= 20,
             magical_damage= 20,
@@ -223,7 +223,7 @@ monster_list = [
         ),
         FireBossMonster(
             name ="공민영",
-            level= 100,
+            level= 999,
             hp= 200,
             physical_damage= 20,
             magical_damage= 20,
@@ -232,7 +232,7 @@ monster_list = [
         ),
         WaterBossMonster(
             name ="나지쓰",
-            level= 30,
+            level= 300,
             hp= 200,
             physical_damage= 20,
             magical_damage= 20,
@@ -241,7 +241,7 @@ monster_list = [
         ),
         GrassBossMonster(
             name="NO탁근",
-            level= 40,
+            level= 400,
             hp= 200,
             physical_damage= 20,
             magical_damage= 20,

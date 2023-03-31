@@ -34,6 +34,7 @@ class Player(status.MainStatus):
         self.physical_damage += 10
         self.magical_damage += 10
         self.critical
+        self.life = 3
 
     def get_exp(self, target):
         # 상대방의 경험치를 받아와서 내 현재 경험치를 증가 시킨다

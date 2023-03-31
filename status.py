@@ -12,8 +12,8 @@ class MainStatus:
         self.now_hp = max(self.max_hp, 0)
         self.max_mp = 1000
         self.now_mp = max(self.max_mp, 0)
-        self.physical_damage = 1
-        self.magical_damage = 1
+        self.physical_damage = 30
+        self.magical_damage = 30
         self.critical = 0.15
         self.strength = 10
         self.intelligence = 10
@@ -26,6 +26,15 @@ class MainStatus:
         self.mp_color = "[bold blue]" + "■" + "[/bold blue]"
         self.exp_color = "[bold green]" + "■" + "[/bold green]"
         self.life = 3
+    # 사용자정보 저장 함수
+    def save(self,name): # 사용자정보 저장 함수
+        with open(f"{name}.json","w") as f: 
+            json.dump(self.__dict__,f) # self.__dict__는 클래스의 모든 변수를 딕셔너리 형태로 반환합니다.
+
+    # 사용자정보 불러오기 함수
+    def load(self,name):# 사용자정보 불러오기 함수
+        with open(f"{name}.json","r") as f: 
+            self.__dict__ = json.load(f) # self.__dict__는 클래스의 모든 변수를 딕셔너리 형태로 반환합니다.
 
     ## 비례법한칙을 이용, 체력 게이지바
     def bar(self, max, now, box_color):  # max:최대값, now:현재값
@@ -77,11 +86,15 @@ class MainStatus:
         self.magical_damage += 10 * self.weapon_level  # 플레이어 마법공격력
 
     def upgrade(self):  # 아이템 업그레이드
-        if self.gold >= 1000:  # 플레이어 골드가 1000이상일때
+        value = random.uniform(0,1)
+        if self.gold >= 1000:
             self.gold -= 1000  # 플레이어 골드 1000차감
-            self.weapon_level += 1  # 아이템 레벨 1증가
-            self.weapon_damage_add()
-            print("강화 성공!!")
+            if value < 0.7:
+                self.weapon_level += 1  # 아이템 레벨 1증가
+                self.weapon_damage_add()
+                print("강화 성공!!")
+            else:
+                print("강화실패 ㅋㅋ")
         else:
             print("골드가 부족하지롱~.")  # 플레이어 골드가 1000이하일때
             return  # 함수 종료
@@ -90,11 +103,11 @@ class MainStatus:
         self.gold += target.gold # 30골드가기
 
     def weapon_upgrade(self): # 무기 강화
-        os.system("cls")
+        os.system("cls" if os.name == "nt" else "clear")
         time.sleep(0.3) # 1초 대기
         key_map = {"k":True,"l":False} # k = 강화하기, l = 사냥하러 가기
         while(True): # 무한루프
-            os.system('cls') # 화면 지우기
+            os.system("cls" if os.name == "nt" else "clear") # 화면 지우기
             gold_text ="[bold yellow]" + str(self.gold) + "G" + "[/bold yellow]"
             string = "@"*20
             string += " 강해질 수 있는 기회!!! "
@@ -111,7 +124,3 @@ class MainStatus:
                     continue
                 else :
                     break
-    def save(self,name):
-        with open(f"{name}.json","w") as f:
-            json.dump(self.__dict__,f)
-        print(self.__dict__)

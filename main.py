@@ -3,22 +3,6 @@ from monster import *
 from rich import *
 import time, random, os, time,keyboard,opening,view
 
-monster_list = [
-        #속성 / 이름 / 레벨 / 체력 / 기본 공격력 / 마법 공격력 / 경험치 / 골드
-        FireMonster("파이리", 1, 200, 20, 20, 10, 100),
-        GrassMonster("이상해씨", 1, 200, 20, 20, 10, 100),
-        WaterMonster("꼬부기", 1, 200, 20, 20, 10, 100),
-        FireMonster("브케인", 1, 200, 20, 20, 10, 100),
-        FireMonster("뚜꾸리", 1, 200, 20, 20, 10, 100),
-        GrassMonster("쥬리비안", 1, 200, 20, 20, 10, 100),
-        WaterMonster("팽도리", 1, 200, 20, 20, 10, 100),
-        FireMonster("가디", 1, 200, 20, 20, 10, 100),
-        GrassMonster("이상해꽃", 2, 200, 20, 20, 10, 100),
-        WaterMonster("어니부기", 2, 200, 20, 20, 10, 100),
-        FireBossMonster("공민영", 100, 200, 20, 20, 50, 100),
-        GrassBossMonster("NO탁근", 4, 200, 20, 20, 50, 100),
-        WaterBossMonster("나지쓰", 3, 200, 20, 20, 40, 100),
-    ]
 
 def player_choice():
     q_message = "[bold red]" + "Q - 일반 공격 " + "[/bold red]"
@@ -39,7 +23,6 @@ def player_choice():
 
 def battle():  # 전투가 진행되는 함수
     #생성될 몬스터 종류
-
     #랜덤 몬스터 생성(최대 3마리)
     mob = random.choices(monster_list, k=random.randint(1, 3))
 
@@ -91,8 +74,8 @@ def battle():  # 전투가 진행되는 함수
                 lambda: monster.token_skill(player_character),
             ]
             if monster.boss:
-                monster.battle_healing()  # 보스 몬스터가 힐링
-                monster.over_drive()  # 보스 몬스터가 오버드라이브
+                monster.battle_healing(player_character)  # 보스 몬스터가 힐링
+                monster.over_drive(pla)  # 보스 몬스터가 오버드라이브
             value = random.randrange(len(skill))
             skill[value]()  # 몬스터가 플레이어를 공격
             if value < 2 :

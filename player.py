@@ -19,7 +19,8 @@ class Player(status.MainStatus):
         string += f" 마나 : {self.bar(self.max_mp,self.now_mp,self.mp_color)} {self.now_mp}/{self.max_mp}\n"  # 마나바
         string += f" EXP : {self.bar(self.max_experience,self.now_experience,self.exp_color)} {self.now_experience}/{self.max_experience}\n"  # 경험치바
         string += f" 무기 :{self.weapon_name}lv.{self.weapon_level} \n{s}\n\n"  # 무기 이름 , 무기레벨, 코멘트 추가
-        string += f"[{target.name}] lv.{target.level}\n체력 : {target.bar(target.max_hp,target.now_hp,target.hp_color)} {target.now_hp}/{target.max_hp}"
+        string += f"                                        [{target.name}] lv.{target.level}\n"
+        string += f"                                         체력 : {target.bar(target.max_hp,target.now_hp,target.hp_color)} {target.now_hp}/{target.max_hp}"
         self.print_message(string)
 
 

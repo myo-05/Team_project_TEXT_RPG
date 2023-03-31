@@ -1,6 +1,8 @@
 from player import *
 from monster import *
 from rich import *
+from lod import *
+from datetime import datetime
 import time, random, os, time,keyboard,opening
 
 
@@ -100,6 +102,7 @@ def battle():  # 전투가 진행되는 함수
             break  # 플레이어가 억까 당햇을때~
                 # break
 
+
 # 맵 그리기
 def location(x, y, rows, cols, xarr, yarr, hunting_ground):
     # box color
@@ -162,6 +165,8 @@ def move():
         #3마리의 몬스터의 좌표들중, 일치하는 값이 있는지 탐색
         for i in range(len(xarr)):
             if x == xarr[i] and y == yarr[i]:
+                #로딩
+                loding()
                 #몬스터 매칭!
                 battle()
                 x, y = 5, 0
@@ -211,6 +216,9 @@ def move():
             x = 25
             set_monster_location(xarr, yarr, rows, cols)
 
+
+############▼###############실제 실행 함수들 #############▼##########################
+
 os.system('cls')
 # 사용자 이름 입력!
 name = str(input("이름을 입력해주세요 : "))
@@ -242,9 +250,9 @@ while True:
 
 player_character = job_list[job]
 
-opening.oppening()
+#opening.oppening() #오프닝
 start_time=time.time() #게임시작시간측정
-move()
+move() #맵탐색모드 + 전투
 end_time=time.time() #게임종료시간측정
 print("\n즐거운 운빨게임! 좋은 플레이! 좋은 하루! 가지다 너는!")
 playtime = f"{end_time-start_time:.3f} 초"

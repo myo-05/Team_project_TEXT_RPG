@@ -16,7 +16,8 @@ class Monster(MainStatus):
         string += f" 마나: {target.bar(target.max_mp,target.now_mp,target.mp_color)} {target.now_mp}/{target.max_mp}\n"
         string += f" EXP : {target.bar(target.max_experience,target.now_experience,target.exp_color)} {target.now_experience}/{target.max_experience}\n"
         string += f" {target.weapon_name} lv.{target.weapon_level} \n{s}\n\n"
-        string += f"[{self.name}] lv.{self.level}\n 체력: {self.bar(self.max_hp,self.now_hp,self.hp_color)} {self.now_hp}/{self.max_hp}\n"
+        string += f"                                        [{self.name}] lv.{self.level}\n"
+        string += f"                                         체력: {self.bar(self.max_hp,self.now_hp,self.hp_color)} {self.now_hp}/{self.max_hp}\n"
         self.print_message(string)
 
     def __init__(self, **kwargs):  # 몬스터의 이름, 레벨, 골드를 받는다.

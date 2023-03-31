@@ -1,4 +1,4 @@
-import random, status
+import random, status,keyboard
 from rich import *
 
 # 상속받을 페이지 status 연결
@@ -21,6 +21,7 @@ class Player(status.MainStatus):
         string += f" 무기 :{self.weapon_name}lv.{self.weapon_level} \n{s}\n\n"  # 무기 이름 , 무기레벨, 코멘트 추가
         string += f"[{target.name}] lv.{target.level}\n체력 : {target.bar(target.max_hp,target.now_hp,target.hp_color)} {target.now_hp}/{target.max_hp}"
         self.print_message(string)
+
 
     def level_up(self):
         # 레벨업하면 스탯이 조정된다

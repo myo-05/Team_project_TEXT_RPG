@@ -231,7 +231,7 @@ monster_list = [
         ),
         WaterBossMonster(
             name ="나지쓰",
-            level= 3,
+            level= 30,
             hp= 200,
             physical_damage= 20,
             magical_damage= 20,
@@ -240,7 +240,7 @@ monster_list = [
         ),
         GrassBossMonster(
             name="NO탁근",
-            level= 4,
+            level= 40,
             hp= 200,
             physical_damage= 20,
             magical_damage= 20,

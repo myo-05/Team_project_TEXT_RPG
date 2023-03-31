@@ -1,7 +1,7 @@
 from player import *
 from monster import *
 from rich import *
-import time, random, os, time,keyboard,opening
+import time, random, os, time,keyboard,opening,view
 
 monster_list = [
         #속성 / 이름 / 레벨 / 체력 / 기본 공격력 / 마법 공격력 / 경험치 / 골드
@@ -29,13 +29,13 @@ def player_choice():
     print("사용할 스킬을 입력해주세요.")
     print(q_message+w_message+e_message+r_message)
     # dictionary형태로, q,w,e,r의 value값을 설정한다.
-    keymap = {"q":1,"w":2,"e":3,"r":4}
+    key_map = {"q":1,"w":2,"e":3,"r":4}
     while True :
         #입력 받은 값을, 소문자건 대문자건, lower함수를 통해 소문자로 변경한다.
         key = keyboard.read_key().lower()
         #입력 받은 값이, 딕셔너리에 있다면 key값에 맞는 value 를 반환한다.
-        if key in keymap:
-            return keymap[key]
+        if key in key_map:
+            return key_map[key]
 
 def battle():  # 전투가 진행되는 함수
     #생성될 몬스터 종류
@@ -148,7 +148,7 @@ while True:
 
 player_character = job_list[job]
 opening.oppening()
-battle()
+
 print("\n테스트성공!")
 
 # 1. monster.py 64번줄, battle_healing의 출력 메소드 호출 코드가 give_message가 아닌 print_message

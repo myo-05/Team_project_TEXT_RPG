@@ -95,4 +95,3 @@ def move():
             hunting_ground -= 1
             x = 25
             set_monster_location(xarr, yarr, rows, cols)
-battle()

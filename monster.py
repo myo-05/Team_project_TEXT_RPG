@@ -129,7 +129,7 @@ class WaterBossMonster(WaterMonster):
 
 
 monster_list = [
-        속성 / 이름 / 레벨 / 체력 / 기본 공격력 / 마법 공격력 / 경험치 / 골드
+        #속성 / 이름 / 레벨 / 체력 / 기본 공격력 / 마법 공격력 / 경험치 / 골드
         FireMonster(
             name ="파이리",
             level= 1,

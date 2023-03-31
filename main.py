@@ -132,6 +132,7 @@ while True:
 
 player_character = job_list[job]
 opening.oppening()
+battle()
 print("\n테스트성공!")
 
 # 1. monster.py 64번줄, battle_healing의 출력 메소드 호출 코드가 give_message가 아닌 print_message
